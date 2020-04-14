@@ -40,10 +40,7 @@ def getVerse(number):
         if (line == 1 and line != number):
             verse += "and "
         verse += lines[line]
-        if (line == 1):
-            verse += "."
-        else:
-            verse += ", "
+        verse += "." if line == 1 else ", "
     return verse
 
 
