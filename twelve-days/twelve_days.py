@@ -34,17 +34,12 @@ def getFirstLine(number):
 
 
 def getVerse(number):
-    verse = getFirstLine(number)
-    for line in range(number, 0, -1):
-        if line == 1 and line != number:
-            verse += "and "
-        verse += allVerses[line]
-        verse += "." if line == 1 else ", "
+    verses = [allVerses[line] for line in range(number, 0, -1)]
+    if number > 1:
+        verses[number - 1] = "and " + verses[number - 1]
+    verse = getFirstLine(number) + ", ".join(verses) + "."
     return verse
 
 
 def recite(start_verse, end_verse):
-    verses = []
-    for verse in range(start_verse, end_verse + 1):
-        verses.append(getVerse(verse))
-    return verses
+    return [getVerse(verse) for verse in range(start_verse, end_verse + 1)]
