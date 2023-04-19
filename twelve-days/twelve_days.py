@@ -34,7 +34,7 @@ def getFirstLine(number):
 
 
 def getVerse(number):
-    verses = [allVerses[line] for line in range(number, 0, -1)]
+    verses = reversed(allVerses)
     if number > 1:
         verses[number - 1] = "and " + verses[number - 1]
     verse = getFirstLine(number) + ", ".join(verses) + "."
