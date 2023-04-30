@@ -63,6 +63,6 @@ def fail_safe(temperature, neutrons_produced_per_second, threshold):
     criticality = temperature * neutrons_produced_per_second
     if criticality < threshold * 0.9:
         return "LOW"
-    if criticality > threshold * 0.9 and criticality < threshold * 1.1:
+    if threshold * 0.9 < criticality < threshold * 1.1:
         return "NORMAL"
     return "DANGER"
